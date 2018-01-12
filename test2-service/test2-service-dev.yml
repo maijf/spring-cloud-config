@@ -1,0 +1,10 @@
+spring:
+  sleuth:
+    sampler:
+      percentage: 1 #采样比率(默认0.1=10%)
+  #配置RabbitMQ
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: test
+    password: '{cipher}AQCx+F442n8ixSyUkM7XAZEADrfd3QhICSKNBi1ee0z1HGSj1apWE2bLfqrgAOi3RN5Bxo3cj9xQYgacx7jpGfw4I920H8U+JtYl2mzGoe1j9jUFVw4+AXJrKCLxyuAiIgRF0UAZW6MN7Xobvg6Bbb2K4rWF9j3tlhNJPjVuJV7v/w5DVVtD95d+apgAFp+lGwyp2WwCo+PAySYecU4MO9+ZxthbjDwa9d+cpefzIggSqu1CTCGF2QKFUx7iKJiQYOS37jjIep8eiDRPF6pKqvz60o5H028pRAMuGD6/5WE2ETRicq3iybU7t/rYXMwv3mmuFWmv9gkhxUGWwqytmpcW/CkAqy7Oc32xI4x1OgSTfk2BDnVjzDbvtfEuJp1Anp8='

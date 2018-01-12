@@ -1,0 +1,38 @@
+#hystrix全局配置
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false #禁用熔断超时
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 500
+
+#Ribbon全局配置
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 2000
+  MaxAutoRetries: 0 #同一实例最大重试次数，不包括首次调用
+  MaxAutoRetriesNextServer: 1 #重试其他实例的最大重试次数，不包括首次所选的server
+
+#zuul配置
+zuul:
+  retryable: true #开启Zuul的重试
+  ignoredServices: '*' #忽略映射全部服务(因注册服务默认使用serviceId路径映射，所以先全部屏蔽映射然后在routes中具体配置)
+  routes: #routes定义映射服务(优先级比ignoredServices高)
+    test1-service:
+      path: /test1/**
+    test2-service:
+      path: /test2/**
+
+spring:
+  sleuth:
+    sampler:
+      percentage: 1 #采样比率(默认0.1=10%)
+  #配置RabbitMQ
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: test
+    password: '{cipher}AQCx+F442n8ixSyUkM7XAZEADrfd3QhICSKNBi1ee0z1HGSj1apWE2bLfqrgAOi3RN5Bxo3cj9xQYgacx7jpGfw4I920H8U+JtYl2mzGoe1j9jUFVw4+AXJrKCLxyuAiIgRF0UAZW6MN7Xobvg6Bbb2K4rWF9j3tlhNJPjVuJV7v/w5DVVtD95d+apgAFp+lGwyp2WwCo+PAySYecU4MO9+ZxthbjDwa9d+cpefzIggSqu1CTCGF2QKFUx7iKJiQYOS37jjIep8eiDRPF6pKqvz60o5H028pRAMuGD6/5WE2ETRicq3iybU7t/rYXMwv3mmuFWmv9gkhxUGWwqytmpcW/CkAqy7Oc32xI4x1OgSTfk2BDnVjzDbvtfEuJp1Anp8='

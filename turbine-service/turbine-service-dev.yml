@@ -1,0 +1,16 @@
+turbine:
+  aggregator:
+    clusterConfig: default #指定聚合哪些集群，多个使用”,”分割，默认为default。可使用http://.../turbine.stream?cluster={clusterConfig之一}访问
+  appConfig: test1-service,zuul-service # 配置Eureka中的serviceId列表，表明监控哪些服务
+  #1. clusterNameExpression指定集群名称，默认表达式appName；此时：turbine.aggregator.clusterConfig需要配置想要监控的应用名称；
+  #2. 当clusterNameExpression: default时，turbine.aggregator.clusterConfig可以不写，因为默认就是default；
+  #3. 当clusterNameExpression: metadata[‘cluster’]时，假设想要监控的应用配置了eureka.instance.metadata-map.cluster: ABC，则需要配置，同时turbine.aggregator.clusterConfig: ABC
+  clusterNameExpression: new String("default")
+
+spring:
+  #配置RabbitMQ
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: test
+    password: '{cipher}AQCx+F442n8ixSyUkM7XAZEADrfd3QhICSKNBi1ee0z1HGSj1apWE2bLfqrgAOi3RN5Bxo3cj9xQYgacx7jpGfw4I920H8U+JtYl2mzGoe1j9jUFVw4+AXJrKCLxyuAiIgRF0UAZW6MN7Xobvg6Bbb2K4rWF9j3tlhNJPjVuJV7v/w5DVVtD95d+apgAFp+lGwyp2WwCo+PAySYecU4MO9+ZxthbjDwa9d+cpefzIggSqu1CTCGF2QKFUx7iKJiQYOS37jjIep8eiDRPF6pKqvz60o5H028pRAMuGD6/5WE2ETRicq3iybU7t/rYXMwv3mmuFWmv9gkhxUGWwqytmpcW/CkAqy7Oc32xI4x1OgSTfk2BDnVjzDbvtfEuJp1Anp8='
